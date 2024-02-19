@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2010dd7fde469aa4dba63128468310be, type: 3}
+  m_Name: Snow
+  m_EditorClassIdentifier: 
+  stone: {fileID: 11400000, guid: 63e95a6f919df0f46a275ce268b44649, type: 2}
+  dirt: {fileID: 11400000, guid: 445d3e05aefb34d42b00453be21bec4e, type: 2}
+  grass: {fileID: 11400000, guid: 68211df973dd8bd4e9cb1e2716a13e1f, type: 2}
+  log: {fileID: 0}
+  leaf: {fileID: 0}
+  foliage: {fileID: 0}
+  snow: {fileID: 0}
+  sand: {fileID: 0}
+  treeStump: {fileID: 0}
+  treeTop: {fileID: 0}
+  aluminumOre: {fileID: 11400000, guid: f9e819b81535565498d809a2d36f2dd5, type: 2}
+  ironOre: {fileID: 11400000, guid: f4c02a26a7f29b84ab80b072355941e6, type: 2}
+  goldOre: {fileID: 11400000, guid: b1637b1f313e68d489a8aee850c6190c, type: 2}
+  titaniumOre: {fileID: 11400000, guid: 16d8a5608d9ac784884e9e21c06f0951, type: 2}

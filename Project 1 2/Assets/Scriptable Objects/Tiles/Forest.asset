@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2010dd7fde469aa4dba63128468310be, type: 3}
+  m_Name: Forest
+  m_EditorClassIdentifier: 
+  stone: {fileID: 11400000, guid: 223d639bbc402714893b730f6dbc1900, type: 2}
+  dirt: {fileID: 11400000, guid: 6895bec2e22e4da44baa64cf9fc84f6f, type: 2}
+  grass: {fileID: 11400000, guid: 04e25d0ea996b2844868247d75b8a351, type: 2}
+  log: {fileID: 11400000, guid: 50802f373a4e89540996b003ff69c9e6, type: 2}
+  leaf: {fileID: 11400000, guid: 8e03a152bef86724593693f880078c39, type: 2}
+  foliage: {fileID: 0}
+  snow: {fileID: 0}
+  sand: {fileID: 0}
+  treeStump: {fileID: 11400000, guid: 437bde476b7e67f41afb2dd8f2db0df8, type: 2}
+  treeTop: {fileID: 11400000, guid: d37c1a2662379b044ae91622199e6022, type: 2}
+  stoneWall: {fileID: 11400000, guid: 2623c6eba60775d46bc4dcc37d46c065, type: 2}
+  dirtWall: {fileID: 11400000, guid: b452bd0853290e743ad666461a4c04ab, type: 2}
+  aluminumOre: {fileID: 11400000, guid: f9e819b81535565498d809a2d36f2dd5, type: 2}
+  ironOre: {fileID: 11400000, guid: f4c02a26a7f29b84ab80b072355941e6, type: 2}
+  goldOre: {fileID: 11400000, guid: b1637b1f313e68d489a8aee850c6190c, type: 2}
+  titaniumOre: {fileID: 11400000, guid: 16d8a5608d9ac784884e9e21c06f0951, type: 2}

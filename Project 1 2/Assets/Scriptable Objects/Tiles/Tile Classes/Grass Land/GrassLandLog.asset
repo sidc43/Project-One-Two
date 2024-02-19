@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b801b33bbd2b841a7e5e147f07d88d, type: 3}
+  m_Name: GrassLandLog
+  m_EditorClassIdentifier: 
+  tileName: Grassland Log
+  sprites:
+  - {fileID: 21300000, guid: de9d6c3273cd34f40bbd9d296d086db3, type: 3}
+  - {fileID: 21300000, guid: a4e92ecd670b3164f8aba1b6a07608f2, type: 3}
+  - {fileID: 21300000, guid: 68c3187e33daea5449a75325854a9298, type: 3}
+  dropSprite: {fileID: 21300000, guid: a4e92ecd670b3164f8aba1b6a07608f2, type: 3}
+  wall: {fileID: 0}
+  stackSize: 99
+  stackable: 1
+  naturallyPlaced: 0
+  isInBackground: 1
+  isSolid: 1
+  doesDrop: 1
