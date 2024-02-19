@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private TerrainGenerator terrainGenerator;
     [SerializeField] private CinemachineVirtualCamera vCam;
-    [SerializeField] private TileClass selectedTile;
+    [SerializeField] private ItemClass selectedItem;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -109,19 +109,6 @@ public class PlayerController : MonoBehaviour
     public void StopHitAnimation()
     {
         animator.SetBool("Hit", false);
-    }
-    #endregion
-
-    #region COLLISIONS
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ground"))
-            onGround = true;
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ground"))
-            onGround = false;
     }
     #endregion
 }
