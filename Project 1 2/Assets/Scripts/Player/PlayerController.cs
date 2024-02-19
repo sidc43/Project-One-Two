@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TerrainGenerator terrainGenerator;
     [SerializeField] private CinemachineVirtualCamera vCam;
     [SerializeField] private ItemClass selectedItem;
+    [SerializeField] private PolygonCollider2D worldBoundCollider;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -45,11 +46,27 @@ public class PlayerController : MonoBehaviour
         SetMousePos();
 
         HandleAnimations();
-        HandleHit();
-        HandlePlace();
+        HandleLMB();
+        HandleRMB();
     }
 
-    #region GENERAL
+    #region ACTIONS
+    private void HandleLMB()
+    {
+        if (Utility.InRange(transform.position, mousePos, attackRange) && Utility.LMB)
+            terrainGenerator.RemoveTile(mousePos.x, mousePos.y);
+    }
+    private void HandleRMB()
+    {
+        if (Utility.InRange(transform.position, mousePos, placeRange) && Utility.RMB)
+        {
+            if (selectedItem.itemType == ItemClass.ItemType.Block)
+                terrainGenerator.PlaceTile(selectedItem.tile, mousePos.x, mousePos.y, this);
+        }
+    }
+    #endregion
+
+    #region DATA
     public void Spawn()
     {
         GetComponent<Transform>().position = spawnPos;
@@ -69,18 +86,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region MOVEMENT
-    private void HandleHit()
-    {
-        if (Vector2.Distance(transform.position, mousePos) <= attackRange && Utility.LMB)
-            terrainGenerator.RemoveTile(mousePos.x, mousePos.y);
-    }
-    private void HandlePlace()
-    {
-        if (Vector2.Distance(transform.position, mousePos) <= placeRange && Utility.RMB)
-        {
-            terrainGenerator.PlaceTile(selectedTile, mousePos.x, mousePos.y, this);
-        }
-    }
     private void Jump(float jump)
     {
         if (jump > 0.1f)

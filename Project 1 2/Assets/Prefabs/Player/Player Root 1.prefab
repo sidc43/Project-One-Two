@@ -347,7 +347,18 @@ MonoBehaviour:
   inventory: {fileID: 0}
   terrainGenerator: {fileID: 0}
   vCam: {fileID: 0}
-  selectedTile: {fileID: 11400000, guid: 223d639bbc402714893b730f6dbc1900, type: 2}
+  selectedItem:
+    itemName: 
+    sprite: {fileID: 0}
+    tile: {fileID: 0}
+    tool: {fileID: 0}
+    weapon: {fileID: 0}
+    itemType: 0
+    toolType: 0
+    weaponType: 0
+    stackable: 0
+    stackSize: 0
+  worldBoundCollider: {fileID: 0}
 --- !u!95 &255950502941069424
 Animator:
   serializedVersion: 5
@@ -382,10 +393,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tool: {fileID: 11400000, guid: bb8660190771cd145973d8c729800cf1, type: 2}
-  offset: {x: -320, y: -230}
+  hotbarSelector: {fileID: 0}
+  selectedIndex: 0
+  inventoryOffset: {x: -320, y: -220}
+  hotbarOffset: {x: 30, y: -30}
   multiplier: {x: 60, y: 60}
   inventoryUI: {fileID: 0}
+  hotbarUI: {fileID: 0}
   inventorySlotPF: {fileID: 1698180042841202256, guid: 5f5db1a9512e70a49a575e6b90740ae6, type: 3}
+  hotbarUISlots: []
   inventoryWidth: 9
   inventoryHeight: 4
 --- !u!1 &4440415626677517141

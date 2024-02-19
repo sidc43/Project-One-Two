@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -41,11 +42,13 @@ public class TerrainGenerator : MonoBehaviour
     private float seed;
 
     [Header("Misc")]
+    [SerializeField] CinemachineConfiner2D confiner; 
     [SerializeField] private PlayerController player;
     [SerializeField] private PolygonCollider2D worldBoundCollider;
     [SerializeField] private GameObject tileDrop;
     [SerializeField] private GameObject borderTile;
     [SerializeField] private GameObject borderParent;
+    [SerializeField] private GameObject lightOverlay;
 
     [Header("Buffers")]
     private GameObject[] worldChunks;
@@ -79,9 +82,9 @@ public class TerrainGenerator : MonoBehaviour
         Initialize();
         InitializeLighting();
 
+        SetWorldBoundCollider();
         CreateBorder();
         DrawTextures();
-        SetWorldBoundCollider();
         DrawCavesAndOres();
         GenerateChunks();
         GenerateTerrain();
@@ -117,6 +120,10 @@ public class TerrainGenerator : MonoBehaviour
             biomeCol[i] = biomes[i].biomeColor;
         }
 
+        lightShader.SetFloat("_WorldSize", worldSize);
+        lightOverlay.transform.localScale = new Vector2(worldSize, worldSize);
+        lightOverlay.transform.position = new Vector2(worldSize / 2, worldSize / 2);
+        
         InitializeCollections();
     }
     private void InitializeLighting()
@@ -336,7 +343,9 @@ public class TerrainGenerator : MonoBehaviour
     #region TERRAIN GENERATION
     private void SetWorldBoundCollider()
     {
+        confiner.InvalidateCache();
         worldBoundCollider.points = new[] { new Vector2(worldSize - 1, worldSize), new Vector2(0, worldSize), new Vector2(0, 0), new Vector2(worldSize - 1, 0) };
+        confiner.m_BoundingShape2D = worldBoundCollider;
     }
     void CreateBorder()
     {
