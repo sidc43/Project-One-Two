@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolName: Aluminum Pickaxe
   sprite: {fileID: 21300000, guid: 7cc539b7e4ad09940a227221f33e25ca, type: 3}
-  toolType: 1
+  toolType: 2

@@ -684,7 +684,54 @@ public class TerrainGenerator : MonoBehaviour
             AddObjectToWorld(x, y, newTile, newTC);
             AddTileToWorld(x, y, newTC);
         }
-    } 
+    }
+    // Place tile with fixed sprite
+    public void PlaceTile(TileClass tile, int x, int y, bool isNaturallyPlaced, bool fixedSprite)
+    {
+        if (WithinWorldBounds(x, y))
+        {
+            GameObject newTile = new GameObject();
+
+            int chunkCoordinate = Mathf.RoundToInt(Mathf.Round(x / chunkSize) * chunkSize);
+            chunkCoordinate /= chunkSize;
+            newTile.transform.parent = worldChunks[chunkCoordinate].transform;
+
+            newTile.AddComponent<SpriteRenderer>();
+
+            if (fixedSprite)
+                newTile.GetComponent<SpriteRenderer>().sprite = tile.tileDrop.sprites[0];
+
+            worldTilesMap.SetPixel(x, y, Color.black);
+            if (tile.isInBackground)
+            {
+                newTile.GetComponent<SpriteRenderer>().sortingOrder = -10;
+                if (tile.name.ToLower().Contains("wall"))
+                {
+                    newTile.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+                }
+                else
+                {
+                    worldTilesMap.SetPixel(x, y, Color.white);
+                }
+            }
+            else
+            {
+                newTile.GetComponent<SpriteRenderer>().sortingOrder = -5;
+                newTile.AddComponent<BoxCollider2D>();
+                newTile.GetComponent<BoxCollider2D>().size = Vector2.one;
+                newTile.tag = "Ground";
+            }
+
+
+            newTile.name = tile.sprites[0].name;
+            newTile.transform.position = new Vector2(x + 0.5f, y + 0.5f);
+
+            TileClass newTC = TileClass.CreateInstance(tile, isNaturallyPlaced);
+
+            AddObjectToWorld(x, y, newTile, newTC);
+            AddTileToWorld(x, y, newTC);
+        }
+    }
     #endregion
 
     #region TERRAIN MANIPULATION
@@ -696,8 +743,8 @@ public class TerrainGenerator : MonoBehaviour
             if (GetTileFromWorld(x, y) == null && CheckTileSurroundings(x, y))
             {
                 // Place tile regardless
-                PlaceTile(tile, x, y, false);
                 RemoveLightSource(x, y);
+                PlaceTile(tile, x, y, false, true);
             }
             else
             {
@@ -707,8 +754,8 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     // Overwrite existing tile
                     RemoveTile(x, y);
-                    PlaceTile(tile, x, y, false);
                     RemoveLightSource(x, y);
+                    PlaceTile(tile, x, y, false, true);
                 }
             }
         }
@@ -729,9 +776,8 @@ public class TerrainGenerator : MonoBehaviour
             if (tc.doesDrop)
             {
                 GameObject td = Instantiate(tileDrop, new Vector2(x, y + 0.5f), Quaternion.identity);
-                td.GetComponent<SpriteRenderer>().sprite = tc.dropSprite;
+                td.GetComponent<SpriteRenderer>().sprite = tc.tileDrop.sprites[0];
                 ItemClass tiledropItem = new ItemClass(tc);
-                Debug.Log($"Tile name: {tc.tileName}\tObj name: {tc.name}");
                 td.GetComponent<TileDropController>().item = tiledropItem;
             }
             

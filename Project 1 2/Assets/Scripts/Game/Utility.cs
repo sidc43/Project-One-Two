@@ -11,4 +11,13 @@ public static class Utility
     public static bool MouseWheelDown => Input.GetAxis("Mouse ScrollWheel") < 0f;
     public static bool E => Input.GetKeyDown(KeyCode.E);
     public static bool InRange(Vector2 v1, Vector2 v2, float range) => Vector2.Distance(v1, v2) <= range;
+    public static int GetPressedNumber()
+    {
+        for (int number = 0; number <= 9; number++)
+        {
+            if (Input.GetKeyDown(number.ToString()))
+                return number;
+        }
+        return -1;
+    }
 }

@@ -28,8 +28,11 @@ public class Inventory : MonoBehaviour
     
     public int inventoryWidth, inventoryHeight;
 
+    private PlayerController player;
+
     private void Start()
     {
+        player = GetComponent<PlayerController>();
         slots = new Slot[inventoryWidth, inventoryHeight];
         uiSlots = new GameObject[inventoryWidth, inventoryHeight];
 
@@ -49,17 +52,7 @@ public class Inventory : MonoBehaviour
         if (Utility.E)
             inventoryUI.SetActive(!inventoryUI.activeSelf);
 
-        if (Utility.MouseWheelUp)
-        {
-            if (selectedIndex > 0)
-                selectedIndex--;
-        }
-        else if (Utility.MouseWheelDown)
-        {
-            if (selectedIndex < inventoryWidth)
-                selectedIndex++;
-        }
-
+        UpdateSlotSelector();
     }
 
     private void SetupUI()
@@ -85,7 +78,6 @@ public class Inventory : MonoBehaviour
             hotbarSlots[x] = null;
         }
     }
-
     private void UpdateInventoryUI()
     {
         // Update inventory
@@ -133,7 +125,32 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    private void UpdateSlotSelector()
+    {
+        int num = Utility.GetPressedNumber() - 1;
+        if (num >= 0 && num <= hotbarSlots.Length)
+        {
+            selectedIndex = num;
+        }
 
+        if (Utility.MouseWheelUp)
+        {
+            if (selectedIndex > 0)
+                selectedIndex--;
+        }
+        else if (Utility.MouseWheelDown)
+        {
+            if (selectedIndex < inventoryWidth - 1)
+                selectedIndex++;
+        }
+
+        hotbarSelector.transform.position = hotbarUISlots[selectedIndex].transform.position;
+
+        if (slots[selectedIndex, inventoryHeight - 1] != null)
+            player.selectedItem = slots[selectedIndex, inventoryHeight - 1].item;
+        else
+            player.selectedItem = null;
+    }
     public bool Add(ItemClass item)
     {
         Vector2Int itemPos = Contains(item);
@@ -168,7 +185,6 @@ public class Inventory : MonoBehaviour
         UpdateInventoryUI();
         return added;
     }
-
     public Vector2Int Contains(ItemClass item)
     {
         for (int y = inventoryHeight - 1; y >= 0; y--)
@@ -179,7 +195,6 @@ public class Inventory : MonoBehaviour
                 {
                     if (slots[x, y].item.itemName == item.itemName)
                     {
-                        Debug.Log(slots[x, y].item.itemName);
                         return new Vector2Int(x, y);
                     }
                 }
@@ -188,7 +203,6 @@ public class Inventory : MonoBehaviour
 
          return Vector2Int.one * -1;
     }
-
     public void Remove(ItemClass item)
     {
 

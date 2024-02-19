@@ -22,6 +22,7 @@ public class ItemClass
 
     public enum ItemType
     {
+        None,
         Block,
         Tool,
         Weapon
@@ -29,6 +30,7 @@ public class ItemClass
 
     public enum WeaponType
     {
+        None,
         Melee, 
         Ranged,
         Magic
@@ -36,6 +38,7 @@ public class ItemClass
 
     public enum ToolType
     {
+        None,
         Axe,
         Pickaxe,
         Hammer,
@@ -45,10 +48,11 @@ public class ItemClass
     public ItemClass (TileClass _tile)
     {
         itemName = _tile.tileName;
-        sprite = _tile.dropSprite;
+        sprite = _tile.tileDrop.sprites[0];
         stackable = _tile.stackable;
         itemType = ItemType.Block;
         stackSize = _tile.stackSize;
+        tile = _tile;
     }
 
     public ItemClass (ToolClass _tool)
@@ -58,6 +62,7 @@ public class ItemClass
         stackable = false;
         itemType = ItemType.Tool;
         toolType = _tool.toolType;
+        tool = _tool;
     }
 
     public ItemClass(WeaponClass _weapon)
@@ -67,5 +72,6 @@ public class ItemClass
         stackable = false;
         itemType = ItemType.Weapon;
         weaponType = _weapon.weaponType;
+        weapon = _weapon;
     }
 }

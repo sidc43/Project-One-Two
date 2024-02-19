@@ -14,10 +14,10 @@ public class PlayerController : MonoBehaviour
     public int attackRange;
     public int placeRange;
     public Inventory inventory;
+    public ItemClass selectedItem;
 
     [SerializeField] private TerrainGenerator terrainGenerator;
     [SerializeField] private CinemachineVirtualCamera vCam;
-    [SerializeField] private ItemClass selectedItem;
     [SerializeField] private PolygonCollider2D worldBoundCollider;
 
     private Rigidbody2D rb;
@@ -60,8 +60,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Utility.InRange(transform.position, mousePos, placeRange) && Utility.RMB)
         {
-            if (selectedItem.itemType == ItemClass.ItemType.Block)
-                terrainGenerator.PlaceTile(selectedItem.tile, mousePos.x, mousePos.y, this);
+            if (selectedItem != null)
+            {
+                if (selectedItem.itemType == ItemClass.ItemType.Block)
+                    terrainGenerator.PlaceTile(selectedItem.tile, mousePos.x, mousePos.y, this);
+            }
         }
     }
     #endregion

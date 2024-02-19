@@ -8,7 +8,7 @@ public class TileClass : ScriptableObject
     [Header("Data")]
     public string tileName;
     public Sprite[] sprites;
-    public Sprite dropSprite;
+    public TileClass tileDrop;
     public TileClass wall;
 
     [Header("Attributes")]
@@ -32,7 +32,7 @@ public class TileClass : ScriptableObject
     {
         this.tileName = tile.tileName;
         this.sprites = tile.sprites;
-        this.dropSprite = tile.dropSprite;
+        this.tileDrop = tile.tileDrop;
         this.wall = tile.wall;
         this.isInBackground = tile.isInBackground;
         this.isSolid = tile.isSolid;
