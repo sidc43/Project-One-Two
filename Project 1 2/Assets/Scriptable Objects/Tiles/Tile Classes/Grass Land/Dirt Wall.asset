@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: Dirt Wall
   sprites:
-  - {fileID: 21300000, guid: a99d08337d841694ebd99facfb9d1d1f, type: 3}
+  - {fileID: 21300000, guid: 60100a0348cb26340b3235088fdeb680, type: 3}
   - {fileID: 21300000, guid: 6730639e1d14749469370094b55bc7e8, type: 3}
   - {fileID: 21300000, guid: 558235573d0173d4187870433b843f8c, type: 3}
-  dropSprite: {fileID: 21300000, guid: a99d08337d841694ebd99facfb9d1d1f, type: 3}
+  tileDrop: {fileID: 0}
   wall: {fileID: 0}
   stackSize: 99
   stackable: 1

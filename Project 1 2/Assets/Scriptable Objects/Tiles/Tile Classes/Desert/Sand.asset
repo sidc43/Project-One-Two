@@ -15,10 +15,10 @@ MonoBehaviour:
   tileName: Sand
   sprites:
   - {fileID: 21300000, guid: 5ada0dc14ef52724789b7e2de0caca98, type: 3}
-  dropSprite: {fileID: 21300000, guid: 5ada0dc14ef52724789b7e2de0caca98, type: 3}
+  tileDrop: {fileID: 11400000}
   wall: {fileID: 11400000, guid: a529bbada86600e4c846134d4d99d02b, type: 2}
   stackSize: 99
-  stackable: 0
+  stackable: 1
   naturallyPlaced: 0
   isInBackground: 0
   isSolid: 1

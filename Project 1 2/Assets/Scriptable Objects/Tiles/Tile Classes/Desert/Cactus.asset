@@ -15,10 +15,10 @@ MonoBehaviour:
   tileName: Cactus
   sprites:
   - {fileID: 21300000, guid: 9f43df4363b154041913872aff1ccf9c, type: 3}
-  dropSprite: {fileID: 21300000, guid: 9f43df4363b154041913872aff1ccf9c, type: 3}
+  tileDrop: {fileID: 11400000}
   wall: {fileID: 0}
   stackSize: 99
-  stackable: 0
+  stackable: 1
   naturallyPlaced: 0
   isInBackground: 1
   isSolid: 1
